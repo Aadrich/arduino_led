@@ -41,8 +41,7 @@
 
 - Maga az Arduino projekt, ennek működtetéséhez pedig egy konnektor
 
-<img src="images/media/image1.jpeg"
-style="width:3.62981in;height:4.84375in" />
+<p align="center"><img src="media/image1.jpeg" alt=""></p>
 
 ## Telefonos alkalmazás használata
 
@@ -51,8 +50,7 @@ style="width:3.62981in;height:4.84375in" />
 2.  Ezután kapcsoljuk be a Bluetooth-t a telefonon és párosítsuk össze a
     LED elnevezésű Bluetooth eszközzel
 
-> <img src="images/media/image2.png"
-> style="width:6.29167in;height:0.89583in" />
+> <p align="center"><img src="media/image2.png" alt=""></p>
 >
 > A párosítás során szükséges jelszót megadni, ez alapértelmezetten 1234
 > vagy 0000 (ezt én megváltoztattam, 2018)
@@ -60,22 +58,19 @@ style="width:3.62981in;height:4.84375in" />
 3.  Sikeres párosítást követően indíthatjuk az alkalmazást. Indítást
     követően ez a felület fogad minket:
 
-<img src="images/media/image3.jpeg"
-style="width:2.09375in;height:4.53808in" />
+<p align="center"><img src="media/image3.jpeg" alt=""></p>
 
 4.  Bal felső sarokban nyomjuk meg a Bluetooth ikonnal elátott gombot,
     ekkor megjelennek a párosított eszközeink listája:
 
-<img src="images/media/image4.jpeg"
-style="width:1.57155in;height:3.40625in" />
+<p align="center"><img src="media/image4.jpeg" alt=""></p>
 
 Válasszuk ki a LED eszközt.
 
 5.  Sikeres csatlakozás esetén az alkalmazás visszadob a fő felületre,
     ahol már lehetőségünk van irányítani a led szalagot:
 
-<img src="images/media/image5.jpeg"
-style="width:1.72534in;height:3.73958in" />
+<p align="center"><img src="media/image5.jpeg" alt=""></p>
 
 A felületen található funkciók:
 
@@ -115,8 +110,7 @@ A felületen található funkciók:
 
 ### Bluetooth kezelés
 
-<img src="images/media/image6.png" style="width:6.3in;height:1.89583in"
-alt="A képen szöveg, képernyőkép, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center"><img src="media/image6.png" alt="A"></p>
 
 A BluetoothDevices nevű komponens egy lista, amit rögtön feltöltök a
 párosított eszközök MAC-címével és nevével.
@@ -129,8 +123,7 @@ megjelenítem az éppen aktuális eszköz MAC-címét és nevét.
 
 ### Gombok
 
-<img src="images/media/image7.png" style="width:6.3in;height:1.97431in"
-alt="A képen szöveg, képernyőkép, sor, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center"><img src="media/image7.png" alt="A"></p>
 
 Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
 
@@ -144,8 +137,7 @@ Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
 
 ### Színválasztás
 
-<img src="images/media/image8.png" style="width:6.3in;height:4.00278in"
-alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center"><img src="media/image8.png" alt="A"></p>
 
 Akkor fut le ez a kód, amikor a színválasztóra rábökünk.
 
@@ -158,9 +150,7 @@ vesszőkkel és a végén egy \n karakterrel. pl.: Rányomunk egy színre,
 akkor ezt küldjük el a Bluetooth-on keresztül: vörös szín értéke, zöld
 szín értéke, piros szín értéke\n
 
-<img src="images/media/image9.png"
-style="width:6.22716in;height:4.87355in"
-alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center"><img src="media/image9.png" alt="A"></p>
 
 Amikor a kis gombot mozgatjuk a színválasztón, akkor a Dragged funkció
 beállítja a gomb új helyzetét.
@@ -197,8 +187,7 @@ amin keresztül bemutatom a kapcsolást.
 A thinkercad nem tartalmaz Bluetooth modult, ezért ezt egy sima led
 elektronikai eszközzel helyettesítettem.
 
-<img src="images/media/image10.png" style="width:6.3in;height:6.30903in"
-alt="A képen szöveg, képernyőkép, diagram, térkép látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center"><img src="media/image10.png" alt="A"></p>
 
 Tápegység
 
@@ -257,7 +246,7 @@ Bluetooth modul
     küld, Arduino itt fogad adatot)
 
 - A Bluetooth RX (Receive) pinje az Arduino 3-as pinjébe csatlakozik egy
-  feszültségosztón keresztól.
+  feszültségosztón keresztűl.
 
   - A Bluetooth RX pinje 3.3V logikai szintet vár, viszont az Arduino
     pinjei 5V-on küldenek jelet. Feszültségosztás nélkül hosszabb távon
