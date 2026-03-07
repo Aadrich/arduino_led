@@ -41,8 +41,10 @@
 
 - Maga az Arduino projekt, ennek működtetéséhez pedig egy konnektor
 
+<p align="center">
 <img src="images/media/image1.jpeg"
 style="width:3.62981in;height:4.84375in" />
+</p>
 
 ## Telefonos alkalmazás használata
 
