@@ -14,11 +14,11 @@
 [Telefonos alkalmazás kódja
 [5](#telefonos-alkalmazás-kódja)](#telefonos-alkalmazás-kódja)
 
-[Bluetooth kezelés [5](#bluetooth-kezelés)](#bluetooth-kezelés)
+[Bluetooth kezelés [5](#_Toc223644556)](#_Toc223644556)
 
-[Gombok [5](#gombok)](#gombok)
+[Gombok [5](#_Toc223644557)](#_Toc223644557)
 
-[Színválasztás [6](#színválasztás)](#színválasztás)
+[Színválasztás [6](#_Toc223644558)](#_Toc223644558)
 
 [Hardware [7](#hardware)](#hardware)
 
@@ -28,23 +28,21 @@
 [Elektronikai eszközök összekapcsolása
 [7](#elektronikai-eszközök-összekapcsolása)](#elektronikai-eszközök-összekapcsolása)
 
-[Arduino kód [10](#arduino-kód)](#arduino-kód)
+[Arduino kód [10](#_Toc223644562)](#_Toc223644562)
 
 # Felhasználói dokumentáció
 
 ## Szükséges komponensek 
 
-- Telefon, amire telepítve van az alkalmazás
+- Telefon, amire telepítve van a vezérlő alkalmazás
 
-  - Tesztelés esetén egyébként lehet használni a Serial Bluetooth
-    Terminal appot is
+  - Tesztelés esetén lehet használni a Serial Bluetooth Terminal appot
+    is
 
-- Maga az Arduino projekt, ennek működtetéséhez pedig egy konnektor
+- Maga az Arduino projekt
 
-<p align="center">
 <img src="images/media/image1.jpeg"
 style="width:3.62981in;height:4.84375in" />
-</p>
 
 ## Telefonos alkalmazás használata
 
@@ -57,7 +55,7 @@ style="width:3.62981in;height:4.84375in" />
 > style="width:6.29167in;height:0.89583in" />
 >
 > A párosítás során szükséges jelszót megadni, ez alapértelmezetten 1234
-> vagy 0000 (ezt én megváltoztattam, 2018)
+> vagy 0000
 
 3.  Sikeres párosítást követően indíthatjuk az alkalmazást. Indítást
     követően ez a felület fogad minket:
@@ -87,8 +85,8 @@ A felületen található funkciók:
 - Színfuttatás funkció
 
   - A led az elejétől a végéig 10-es csoportokban felkapcsolódnak.
-    Egyszerre mindig cask 10 led ég, miközben a felkapcsolt ledek színei
-    végigmennek az rgb színeken. Videó: Szinfuttatas.mp4
+    Egyszerre mindig cask 10 led ég, miközben a led színe folyamatosan
+    változik. Videó: Szinfuttatas.mp4
 
 - Színátmenet
 
@@ -115,60 +113,7 @@ A felületen található funkciók:
 
 ## Telefonos alkalmazás kódja
 
-### Bluetooth kezelés
-
-<img src="images/media/image6.png" style="width:6.3in;height:1.89583in"
-alt="A képen szöveg, képernyőkép, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
-
-A BluetoothDevices nevű komponens egy lista, amit rögtön feltöltök a
-párosított eszközök MAC-címével és nevével.
-
-Ezzel együtt megjelenik a Lekapcsolódás gomb is.
-
-Miután a listából kiválasztunk egy eszközt és sikeresen csatlakozunk rá,
-a led funkciók (gombok, színválasztás) felületet láthatóvá teszem és
-megjelenítem az éppen aktuális eszköz MAC-címét és nevét.
-
-### Gombok
-
-<img src="images/media/image7.png" style="width:6.3in;height:1.97431in"
-alt="A képen szöveg, képernyőkép, sor, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
-
-Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
-
-- cometButton (Színátmenet) elküldi az ‘r’ karaktert.
-
-- colorTransition (Színátmenet) elküldi a ‘t’ karaktert.
-
-- christmasButton (Karácsony) elküldi az ‘x’ karaktert.
-
-- turnOff (Kikapcsoló gomb) elküldi az ‘o’ karaktert.
-
-### Színválasztás
-
-<img src="images/media/image8.png" style="width:6.3in;height:4.00278in"
-alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
-
-Akkor fut le ez a kód, amikor a színválasztóra rábökünk.
-
-Ekkor a színválasztó található gombot is áthelyezi arra a területre,
-ahova böktünk.
-
-Amikor rányomunk a színválasztóra, akkor a megadott pixel színét
-(rgb-ben) visszakapjuk x és y koordináta alapján, amit összefűzök
-vesszőkkel és a végén egy \n karakterrel. pl.: Rányomunk egy színre,
-akkor ezt küldjük el a Bluetooth-on keresztül: vörös szín értéke, zöld
-szín értéke, piros szín értéke\n
-
-<img src="images/media/image9.png"
-style="width:6.22716in;height:4.87355in"
-alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
-
-Amikor a kis gombot mozgatjuk a színválasztón, akkor a Dragged funkció
-beállítja a gomb új helyzetét.
-
-A TouchUp funkció ugyanúgy elküldi a Bluetooth eszköznek a beállított
-rgb színt.
+Bővebb információ a MIT app kódról a MIT.md-ben olvasható.
 
 ## Hardware
 
@@ -176,8 +121,7 @@ rgb színt.
 
 - Tápegység
 
-  - A projektben a bemeneti feszültség 100V-240V, a kimeneti 5V,
-    áramerrőség: 2.5 A.
+  - 5V, áramerrőség: 2.5 A.
 
 - Arduino UNO
 
@@ -197,9 +141,10 @@ Az egyszerűség kedvéért thinkercad-ben összeraktam egy kis projektet,
 amin keresztül bemutatom a kapcsolást.
 
 A thinkercad nem tartalmaz Bluetooth modult, ezért ezt egy sima led
-elektronikai eszközzel helyettesítettem.
+helyettesíti.
 
-<img src="images/media/image10.png" style="width:6.3in;height:6.30903in"
+<img src="images/media/image6.png"
+style="width:4.16915in;height:4.17512in"
 alt="A képen szöveg, képernyőkép, diagram, térkép látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
 
 Tápegység
@@ -221,24 +166,20 @@ feszültségingadozás.
   resetelhet vagy a Bluetooth lekapcsolódhat (ez meg is történt velem,
   amikor a ledeket is a sínen keresztül kötöttem be).
 
-Ezért ajánlott a ledeket közvetlenül a tápegységbe bekötni és a többi
-modult elkülönítve a szerelőlapon!
+Ezért ajánlott a ledeket közvetlenül a tápegységbe bekötni, az Arduinot
+és a többi modult elkülönítve a szerelőlapon!
 
 LED
 
-- A tápegység pozitív vezetéke csatlakozik a szerelősín pozitív sínjébe,
-  illetve a led 5V pinbe.
+- A ledek közvetlenül vannak összekötve a tápegységgel.
 
-- A tápegység negatív vezetéke csatlakozik a szerelőlap negatív sínjébe,
-  illetve a led GND pinbe.
-
-- A lednek a DIN pinje az Arduino 8-as pinjébe csatlakozik egy sorosan
-  összekapcsolt 330Ω-os ellenálláson keresztül. Az ellenállás nem
-  kötelező, de erősen ajánlott jelstabilizálásra és jelvédelemre.
+- A lednek a DIN pinje az Arduino 8-as pinjébe csatlakozik egy 330Ω-os
+  ellenálláson keresztül. Az ellenállás nem kötelező, de erősen ajánlott
+  jelstabilizálásra és jelvédelemre.
 
 Arduino UNO
 
-- Az Arduino UNO ugyanerről a tápegységtől kapja az áramot csak a
+- Az Arduino UNO ugyanettől a tápegységtől kapja az áramot csak a
   szerelőlapon keresztül.
 
 A tápegység pozitív vezetéke az Arduino 5V pinjébe csatlakozik, a
@@ -246,7 +187,7 @@ negatív vezeték pedig a GND pinbe.
 
 Bluetooth modul
 
-- A tápegység pozitív vezetéke a Bluetooth modul VCC pinjébe
+- A Bluetooth modul VCC vezetéke a tápegység pozitív vezetéke
   csatlakozik. A modul 3.3V – 6V feszültségre van tervezve, így az 5V
   megfelelő.
 
@@ -279,4 +220,63 @@ Bluetooth modul
 
 - A kódban az Arduino 3-as pinje TX-ként van értelmezve.
 
-## Arduino kód
+## Szoftver
+
+### Setup
+
+<img src="images/media/image7.png"
+style="width:4.6875in;height:2.10417in" />
+
+A ledek irányításához FastLED könyvtárt használok, a setup-ban beállítom
+a FastLED-et a ledek adataival, illetve elindítom a Bluetooth-t.
+
+### Loop
+
+<img src="images/media/image8.png"
+style="width:2.57292in;height:1.96875in"
+alt="A képen szöveg, képernyőkép, Betűtípus, sor látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+
+Amikor küldünk egy adatot a Bluetooth-nak, akkor lefut a getCurrentMode
+metódus, ami feldolgozza a beolvasott adatot és beállítja az aktuális
+funkciót.
+
+Az aktuális funkciók lehetséges értékei: OFF, RUNCOMET, CHRISTMAS,
+COLORPICK,
+
+NONE
+
+getCurrentMode folyamatábra:
+
+<img src="images/media/image9.png" style="width:6.3in;height:2.01597in"
+alt="A képen diagram, szöveg, sor, Diagram látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+
+A beolvasás után a currentMode értéke alapján lefuttatjuk a kiválasztott
+funkció függvényét.
+
+- RUNCOMET esetében lefut a comet() függvény
+
+- TRANSITION esetében lefut a colorTransition() függvény
+
+- CHRISTMAS esetében lefut a christmas() függvény
+
+- COLORPICK esetében lefut a setColorFromString(const String& msg)
+  függvény
+
+- OFF esetén a ledet kikapcsoljuk
+
+## LED funkciói
+
+### Színfuttatás – RUNCOMET – comet()
+
+### Színátmenet – TRANSITION – colorTransition()
+
+100 millisecundumonként váltunk színt az összes leden.
+
+FastLED könyvtár fill_solid() funkciója beállítja egy adott színre az
+összes ledet.
+
+A színeket a hue változóval változtatjuk.
+
+### Karácsony – CHRISTMAS – christmas()
+
+### Színválasztó – COLORPICK – setColorFromString()
