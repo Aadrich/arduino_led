@@ -1,35 +1,3 @@
-# Tartalom
-
-[Felhasználói dokumentáció [1](#_Toc223644551)](#_Toc223644551)
-
-[Szükséges komponensek
-[1](#szükséges-komponensek)](#szükséges-komponensek)
-
-[Telefonos alkalmazás használata
-[2](#telefonos-alkalmazás-használata)](#telefonos-alkalmazás-használata)
-
-[Fejlesztői dokumentáció
-[5](#fejlesztői-dokumentáció)](#fejlesztői-dokumentáció)
-
-[Telefonos alkalmazás kódja
-[5](#telefonos-alkalmazás-kódja)](#telefonos-alkalmazás-kódja)
-
-[Bluetooth kezelés [5](#_Toc223644556)](#_Toc223644556)
-
-[Gombok [5](#_Toc223644557)](#_Toc223644557)
-
-[Színválasztás [6](#_Toc223644558)](#_Toc223644558)
-
-[Hardware [7](#hardware)](#hardware)
-
-[Szükséges elektronikai eszközök
-[7](#szükséges-elektronikai-eszközök)](#szükséges-elektronikai-eszközök)
-
-[Elektronikai eszközök összekapcsolása
-[7](#elektronikai-eszközök-összekapcsolása)](#elektronikai-eszközök-összekapcsolása)
-
-[Arduino kód [10](#_Toc223644562)](#_Toc223644562)
-
 # Felhasználói dokumentáció
 
 ## Szükséges komponensek 
@@ -85,13 +53,13 @@ A felületen található funkciók:
 - Színfuttatás funkció
 
   - A led az elejétől a végéig 10-es csoportokban felkapcsolódnak.
-    Egyszerre mindig cask 10 led ég, miközben a led színe folyamatosan
+    Egyszerre mindig csak 10 led ég, miközben a led színe folyamatosan
     változik. Videó: Szinfuttatas.mp4
 
 - Színátmenet
 
-  - Az összes led ég és a ledek színei végigmennek az rgb színeken.
-    Videó: Szinatmenet.mp4
+  - Az összes led ég, miközben a színek váltakoznak. Videó:
+    Szinatmenet.mp4
 
 - Karácsony
 
@@ -109,11 +77,62 @@ A felületen található funkciók:
   - A gomb megnyomásával “feketére” állítjuk a ledek színét, azaz
     kikapcsoljuk.
 
+# 
+
 # Fejlesztői dokumentáció
 
 ## Telefonos alkalmazás kódja
 
-Bővebb információ a MIT app kódról a MIT.md-ben olvasható.
+Bluetooth kezelés
+
+<img src="images/media/image6.png" style="width:6.3in;height:1.89514in"
+alt="A képen szöveg, képernyőkép, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+
+A BluetoothDevices nevű komponens egy lista, amit rögtön feltöltök a
+párosított eszközök MAC-címével és nevével.
+
+Ezzel együtt megjelenik a Lekapcsolódás gomb is.
+
+Miután a listából kiválasztunk egy eszközt és sikeresen csatlakozunk rá,
+a led funkciók (gombok, színválasztás) felületet láthatóvá teszem és
+megjelenítem az éppen aktuális eszköz MAC-címét és nevét.
+
+Gombok
+
+<img src="images/media/image7.png" style="width:6.3in;height:1.96806in"
+alt="A képen szöveg, képernyőkép, sor, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+
+Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
+
+- cometButton (Színátmenet) elküldi az ‘r’ karaktert.
+
+- colorTransition (Színátmenet) elküldi a ‘t’ karaktert.
+
+- christmasButton (Karácsony) elküldi az ‘x’ karaktert.
+
+- turnOff (Kikapcsoló gomb) elküldi az ‘o’ karaktert.
+
+Színválasztás
+
+<img src="images/media/image8.png" style="width:6.3in;height:3.99861in"
+alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+
+Akkor fut le ez a kód, amikor a színválasztóra rábökünk.
+
+Ekkor a színválasztó található gombot is áthelyezi arra a területre,
+ahova böktünk.
+
+Amikor rányomunk a színválasztóra, akkor a megadott pixel színét
+(rgb-ben) visszakapjuk x és y koordináta alapján, amit összefűzök
+vesszőkkel és a végén egy \n karakterrel. pl.: Rányomunk egy színre,
+akkor ezt küldjük el a Bluetooth-on keresztül: vörös szín értéke, zöld
+szín értéke, piros szín értéke\n
+
+Amikor a kis gombot mozgatjuk a színválasztón, akkor a Dragged funkció
+beállítja a gomb új helyzetét.
+
+A TouchUp funkció ugyanúgy elküldi a Bluetooth eszköznek a beállított
+rgb színt.
 
 ## Hardware
 
@@ -143,8 +162,8 @@ amin keresztül bemutatom a kapcsolást.
 A thinkercad nem tartalmaz Bluetooth modult, ezért ezt egy sima led
 helyettesíti.
 
-<img src="images/media/image6.png"
-style="width:4.16915in;height:4.17512in"
+<img src="images/media/image9.png"
+style="width:4.11894in;height:4.12485in"
 alt="A képen szöveg, képernyőkép, diagram, térkép látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
 
 Tápegység
@@ -224,7 +243,7 @@ Bluetooth modul
 
 ### Setup
 
-<img src="images/media/image7.png"
+<img src="images/media/image10.png"
 style="width:4.6875in;height:2.10417in" />
 
 A ledek irányításához FastLED könyvtárt használok, a setup-ban beállítom
@@ -232,7 +251,7 @@ a FastLED-et a ledek adataival, illetve elindítom a Bluetooth-t.
 
 ### Loop
 
-<img src="images/media/image8.png"
+<img src="images/media/image11.png"
 style="width:2.57292in;height:1.96875in"
 alt="A képen szöveg, képernyőkép, Betűtípus, sor látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
 
@@ -247,7 +266,7 @@ NONE
 
 getCurrentMode folyamatábra:
 
-<img src="images/media/image9.png" style="width:6.3in;height:2.01597in"
+<img src="images/media/image12.png" style="width:6.3in;height:2.01597in"
 alt="A képen diagram, szöveg, sor, Diagram látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
 
 A beolvasás után a currentMode értéke alapján lefuttatjuk a kiválasztott
@@ -268,15 +287,70 @@ funkció függvényét.
 
 ### Színfuttatás – RUNCOMET – comet()
 
+Változók:
+
+lastFrame és transitionComet = A két változót arra használom, hogy
+meghatározzuk mikor kell a következő animációt elindítani.
+
+A transitionComet-el lehet állítani, az animáció sebességét.
+
+groupSize = Mennyi led égjen egyszerre
+
+idx = Melyik ledet kell éppen felkapcsolni
+
+- Figyelni kell arra, hogy az idx ne okozzon indexelési problémákat.
+
+  - Az idx nem lehet negatív: while(idx \< 0) idx += NumLeds;
+
+  - Az idx nem indexelhet túl a led tömbön: LED\[idx % NumLeds\]
+
+hue = Meghatározza a led színét, ami minden egyes animáció után
+változik.
+
+stepIdx = Ez a változó lépteti tovább folyamatosan a ledeket.
+
 ### Színátmenet – TRANSITION – colorTransition()
 
-100 millisecundumonként váltunk színt az összes leden.
+Változók:
+
+lastFrame és transitionColor = Animáció sebességének meghatározása. A
+transitionColor-al tudjuk állítani az animáció sebességét.
 
 FastLED könyvtár fill_solid() funkciója beállítja egy adott színre az
 összes ledet.
 
-A színeket a hue változóval változtatjuk.
+hue = Meghatározza a led színét, ami minden egyes animáció után
+változik.
 
 ### Karácsony – CHRISTMAS – christmas()
 
+Változók:
+
+lastXmas és xmasInterval = Animáció sebességének meghatározása. Az
+xmasInterval-al tudjuk állítani az animáció sebességét.
+
+switchLeds=
+
+xmasPhase
+
+xmasStep
+
+holdOnFrames
+
+holdOffFrames
+
+holdCnt
+
+XmasHoldState
+
 ### Színválasztó – COLORPICK – setColorFromString()
+
+Bluetoothon keresztül kapunk egy rgb színösszeállítást, amit be tudunk
+állítani az összes lednek.
+
+Példa adat: 210,134,110
+
+Ezt feldolgozzok úgy, hogy az első szín az r, a második a g, a harmadik
+pedig a b.
+
+fill_solid-al beállítjuk az rgb színt a lednek.

@@ -122,7 +122,6 @@ void christmas() {
 
   FastLED.show();
 
-  // színek pörgetése (lassítható)
   hue++;
 }
 // SET SOLID COLOR
