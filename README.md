@@ -289,8 +289,9 @@ funkció függvényét.
 
 Változók
 
-| lastFrame | Eltárolja a legutóbbi animáció idejét millis()-ben |
+| Név | Rövid leírás |
 |----|----|
+| lastFrame | Eltárolja a legutóbbi animáció idejét millis()-ben |
 | transitionComet | Meghatározza az animáció sebességét |
 | groupSize | Mennyi led ég egyszerre (jelenleg 10 db) |
 | idx | Melyik ledet kell éppen felkapcsolni |
@@ -311,8 +312,9 @@ Minden animáció lefutáskor
 
 Változók:
 
-| lastFrame       | Eltárolja a legutóbbi animáció idejét millis()-ben |
+| Név             | Rövid leírás                                       |
 |-----------------|----------------------------------------------------|
+| lastFrame       | Eltárolja a legutóbbi animáció idejét millis()-ben |
 | transitionColor | Meghatározza az animáció sebességét                |
 | hue             | Meghatározza a led színét.                         |
 
@@ -326,8 +328,9 @@ legyen, mint az „üstökös” feje.
 
 Változók:
 
-| lastXmas | Eltárolja a legutóbbi animáció idejét millis()-ben |
+| Név | Rövid leírás |
 |----|----|
+| lastXmas | Eltárolja a legutóbbi animáció idejét millis()-ben |
 | xmasInterval | Meghatározza az animáció frissítésének gyakoriságát |
 | XmasHoldState (NONE, HOLD_ON, HOLD_OFF) | Lehetséges állapotai az animációnak |
 | switchLeds | Melyik led csoport legyen az A és melyik B |
