@@ -287,61 +287,55 @@ funkció függvényét.
 
 ### Színfuttatás – RUNCOMET – comet()
 
-Változók:
+Változók
 
-lastFrame és transitionComet = A két változót arra használom, hogy
-meghatározzuk mikor kell a következő animációt elindítani.
+| lastFrame | Eltárolja a legutóbbi animáció idejét millis()-ben |
+|----|----|
+| transitionComet | Meghatározza az animáció sebességét |
+| groupSize | Mennyi led ég egyszerre (jelenleg 10 db) |
+| idx | Melyik ledet kell éppen felkapcsolni |
+| hue | Meghatározza a led színét, ami minden egyes animáció után változik. |
+| stepIdx | Ez a változó lépteti tovább folyamatosan a ledeket. |
 
-A transitionComet-el lehet állítani, az animáció sebességét.
+idx
 
-groupSize = Mennyi led égjen egyszerre
-
-idx = Melyik ledet kell éppen felkapcsolni
-
-- Figyelni kell arra, hogy az idx ne okozzon indexelési problémákat.
+- Figyelni kell arra, hogy az idx ne okozzon indexelési problémákat:
 
   - Az idx nem lehet negatív: while(idx \< 0) idx += NumLeds;
 
   - Az idx nem indexelhet túl a led tömbön: LED\[idx % NumLeds\]
 
-hue = Meghatározza a led színét, ami minden egyes animáció után
-változik.
-
-stepIdx = Ez a változó lépteti tovább folyamatosan a ledeket.
+Minden animáció lefutáskor
 
 ### Színátmenet – TRANSITION – colorTransition()
 
 Változók:
 
-lastFrame és transitionColor = Animáció sebességének meghatározása. A
-transitionColor-al tudjuk állítani az animáció sebességét.
+| lastFrame       | Eltárolja a legutóbbi animáció idejét millis()-ben |
+|-----------------|----------------------------------------------------|
+| transitionColor | Meghatározza az animáció sebességét                |
+| hue             | Meghatározza a led színét.                         |
 
-FastLED könyvtár fill_solid() funkciója beállítja egy adott színre az
-összes ledet.
+Minden animáció lefutáskor a FastLED könynvtár fill_solid() funkciója
+beállítja egy adott színre az összes ledet.
 
-hue = Meghatározza a led színét, ami minden egyes animáció után
-változik.
+A ledek fényeréjét úgy állítom be, hogy az „üstökös” vége halványabb
+legyen, mint az „üstökös” feje.
 
 ### Karácsony – CHRISTMAS – christmas()
 
 Változók:
 
-lastXmas és xmasInterval = Animáció sebességének meghatározása. Az
-xmasInterval-al tudjuk állítani az animáció sebességét.
-
-switchLeds=
-
-xmasPhase
-
-xmasStep
-
-holdOnFrames
-
-holdOffFrames
-
-holdCnt
-
-XmasHoldState
+| lastXmas | Eltárolja a legutóbbi animáció idejét millis()-ben |
+|----|----|
+| xmasInterval | Meghatározza az animáció frissítésének gyakoriságát |
+| XmasHoldState (NONE, HOLD_ON, HOLD_OFF) | Lehetséges állapotai az animációnak |
+| switchLeds | Melyik led csoport legyen az A és melyik B |
+| xmasPhase | Az animáció aktuális fázisát határozza meg |
+| xmasStep | Meghatározza a fényerő átmenetének a sebességét az animáció frissítésekor |
+| holdOnFrames | Max fényerőn töltött cikusok száma |
+| holdOffFrames | Szünet ciklusainak száma |
+| holdCnt | Ez számolja hány frame telt el |
 
 ### Színválasztó – COLORPICK – setColorFromString()
 
