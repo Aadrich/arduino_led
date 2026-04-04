@@ -389,9 +389,8 @@ Ebből 3 féle lehet:
   - Amint elértük a legmagasabb fényerőt 10 framen keresztül megtartjuk
     a ledek aktuális fényerejét. Vizuálisan ad nekünk egy kis szünetet,
     amikor elértük a legmagasabb fényerőt.
-
-> 10 frame után megváltoztatjuk a csoportokat (switchLeds) és beállítjuk
-> az állapotot HOLD_OFF-ra.
+    10 frame után megváltoztatjuk a csoportokat (switchLeds) és beállítjuk
+    az állapotot HOLD_OFF-ra.
 
 - HOLD_OFF
 
