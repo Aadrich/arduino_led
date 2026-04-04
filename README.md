@@ -62,7 +62,9 @@ A felületen található funkciók:
 
   - A led az elejétől a végéig 10-es csoportokban felkapcsolódnak.
     Egyszerre mindig csak 10 led ég, miközben a led színe folyamatosan
-    változik. Videó: Videó: Szinfuttatas.mp4
+    változik. 
+    
+>Videó: Szinfuttatas.mp4
 
 - Színátmenet
 
