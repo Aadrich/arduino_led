@@ -64,66 +64,66 @@ void colorTransition() {
 }
 
 // CHRISTMAS
-bool switchLeds = true;
-uint8_t xmasPhase = 0;          
-uint8_t xmasStep = 4;
-uint32_t lastXmas = 0;
-uint16_t xmasInterval = 40;
 
-uint8_t holdOnFrames  = 10;
-uint8_t holdOffFrames = 6;
-uint8_t holdCnt = 0;
+static bool     switchLeds    = true;
+static uint8_t  phase         = 0;     // 0..255
+static uint32_t lastFrameChristmas      = 0;
 
-enum class XmasHoldState { NONE, HOLD_ON, HOLD_OFF };
-XmasHoldState holdState = XmasHoldState::NONE;
+static constexpr uint8_t  step          = 4;
+static constexpr uint16_t transitionChristmas    = 40;
+static constexpr uint8_t  holdOnFrames  = 10;
+static constexpr uint8_t  holdOffFrames = 6;
+static constexpr uint8_t  cutoff        = 6;
+
+enum class ChristmasMode : uint8_t { FADE, HOLD_ON, HOLD_OFF };
+static ChristmasMode xmasMode = ChristmasMode::FADE;
+static uint8_t hold = 0;
 
 void christmas() {
-  uint32_t now = millis();
-  if (now - lastXmas < xmasInterval) return;
-  lastXmas = now;
+  const uint32_t now = millis();
+  if (now - lastFrameChristmas < transitionChristmas) return;
+  lastFrameChristmas = now;
 
-  if (holdState == XmasHoldState::HOLD_ON) {
-    if (holdCnt++ >= holdOnFrames) {
-      holdCnt = 0;
-      xmasPhase = 0;
-      switchLeds = !switchLeds;
-      holdState = XmasHoldState::HOLD_OFF;
-    }
+  switch (xmasMode) {
+    case ChristmasMode::FADE:
+      phase = (phase + step >= 255) ? 255 : (uint8_t)(phase + step);
+      if (phase == 255) { xmasMode = ChristmasMode::HOLD_ON; hold = 0; }
+      break;
+
+    case ChristmasMode::HOLD_ON:
+      if (++hold >= holdOnFrames) {
+        switchLeds = !switchLeds;
+        phase = 0;
+        xmasMode = ChristmasMode::HOLD_OFF;
+        hold = 0;
+      }
+      break;
+
+case ChristmasMode::HOLD_OFF:
+      if (++hold >= holdOffFrames) {
+        xmasMode = ChristmasMode::FADE;
+        hold = 0;
+      }
+      break;
+
+    
   }
-  else if (holdState == XmasHoldState::HOLD_OFF) {
-    if (holdCnt++ >= holdOffFrames) {
-      holdCnt = 0;
-      holdState = XmasHoldState::NONE;
-    }
-  }
-  else {
-    if (xmasPhase + xmasStep >= 255) xmasPhase = 255;
-    else xmasPhase += xmasStep;
 
-    if (xmasPhase == 255) {
-      holdState = XmasHoldState::HOLD_ON;
-      holdCnt = 0;
-    }
-  }
+  uint8_t b = phase;
+  uint8_t a = 255 - phase;
+  if (a < cutoff) a = 0;
+  if (b < cutoff) b = 0;
 
-  uint8_t p = (xmasPhase);
-  uint8_t bLevel = p;
-  uint8_t aLevel = 255 - p;
-
-  if (aLevel < 6) aLevel = 0;
-  if (bLevel < 6) bLevel = 0;
-
-  for (int i = 0; i < NumLeds; i++) {
-    bool odd = (i & 1);
-    bool isA = switchLeds ? odd : !odd;
-    uint8_t v = isA ? aLevel : bLevel;
-    LED[i] = CHSV(hue, 255, v);
+  for (int i = 0; i < NumLeds; ++i) {
+    const bool odd = (i & 1);
+    const bool isA = switchLeds ? odd : !odd;
+    LED[i] = CHSV(hue, 255, isA ? a : b);
   }
 
   FastLED.show();
-
-  hue++;
+  ++hue;
 }
+
 // SET SOLID COLOR
 String input = "";
 void setColorFromString(const String& msg) {

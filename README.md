@@ -1,6 +1,6 @@
 # Felhasználói dokumentáció
 
-## Szükséges komponensek 
+## Szükséges eszközök 
 
 - Telefon, amire telepítve van a vezérlő alkalmazás
 
@@ -54,23 +54,28 @@ A felületen található funkciók:
 
   - A led az elejétől a végéig 10-es csoportokban felkapcsolódnak.
     Egyszerre mindig csak 10 led ég, miközben a led színe folyamatosan
-    változik. Videó: Szinfuttatas.mp4
+    változik. Videó: Videó: Szinfuttatas.mp4
 
 - Színátmenet
 
-  - Az összes led ég, miközben a színek váltakoznak. Videó:
-    Szinatmenet.mp4
+  - Az összes led ég, miközben a színek váltakoznak.
+
+> Videó: Szinatmenet.mp4
 
 - Karácsony
 
   - Páros és páratlan indexű ledek váltakozása, először minden páros
     indexű led ég, majd elhalványulva elalszik miközben minden páratlan
-    kezd el égni és ezt így felváltva. Videó: Karacsony.mp4
+    kezd el égni és ezt így felváltva.
+
+> Videó: Karacsony.mp4
 
 - Színválasztó
 
   - A színválasztó képre kattintva vagy a színválasztó közepén található
     kis fekete gombbal van lehetőségünk egy bizonyos szín beállítására.
+
+> Videó: Szinvaltas.mp4
 
 - Kikapcsoló gomb
 
@@ -318,6 +323,8 @@ Változók:
 | transitionColor | Meghatározza az animáció sebességét                |
 | hue             | Meghatározza a led színét.                         |
 
+<u>Működés:</u>
+
 Minden animáció lefutáskor a FastLED könynvtár fill_solid() funkciója
 beállítja egy adott színre az összes ledet.
 
@@ -330,24 +337,73 @@ Változók:
 
 | Név | Rövid leírás |
 |----|----|
-| lastXmas | Eltárolja a legutóbbi animáció idejét millis()-ben |
-| xmasInterval | Meghatározza az animáció frissítésének gyakoriságát |
-| XmasHoldState (NONE, HOLD_ON, HOLD_OFF) | Lehetséges állapotai az animációnak |
-| switchLeds | Melyik led csoport legyen az A és melyik B |
-| xmasPhase | Az animáció aktuális fázisát határozza meg |
-| xmasStep | Meghatározza a fényerő átmenetének a sebességét az animáció frissítésekor |
-| holdOnFrames | Max fényerőn töltött cikusok száma |
-| holdOffFrames | Szünet ciklusainak száma |
-| holdCnt | Ez számolja hány frame telt el |
+| switchLeds | Eldönti, hogy A vagy B csoport a páros/páratlan |
+| phase | A két csoport fényerejét vezérli |
+| lastFrameChristmas | Mikor volt a legutóbbi animáció frissítés |
+| step | Mennyivel növekedjen a fényerő |
+| transitionChristmas | Két frame közötti idő, ez felel az animáció gyorsaságáért |
+| holdOnFrames | Mennyi ideig legyen teljes a fényerő |
+| holdOffFrames | Mennyi ideig legyen kikapcsolva a led |
+| hold | Számolja mennyi ideje van kikapcsolva/teljes fényerőn a led |
+| xmasMode | Meghatározza a ledek állapotát |
+| cutoff | Megakadályozza, |
+
+<u>Működés:</u>
+
+- Az egész animáció csak akkor frissül, ha legalább 40ms már eltelt az
+  előző frissítés óta.
+
+Minden egyes frissítéskor az xmasMode segítségével meghatározzuk a
+jelenlegi állapotot.
+
+Ebből 3 féle lehet:
+
+- FADE
+
+  - Ebben az állapotban a phase változó minden frissítéskor nő. A phase
+    szabályozza a páros/páratlan ledek fényerejét. Amikor a phase eléri
+    a legmagasabb fényerőt (255 vagy nagyobb), akkor átváltunk HOLD_ON
+    állapotra.
+
+- HOLD_ON
+
+  - Amint elértük a legmagasabb fényerőt 10 framen keresztül megtartjuk
+    a ledek aktuális fényerejét. Vizuálisan ad nekünk egy kis szünetet,
+    amikor elértük a legmagasabb fényerőt.
+
+> 10 frame után megváltoztatjuk a csoportokat (switchLeds) és beállítjuk
+> az állapotot HOLD_OFF-ra.
+
+- HOLD_OFF
+
+  - A csoportok váltása után megint várakozunk egy kicsit, mielőtt
+    elkezdenénk beállítani a fényerőt.
+
+Az adott állapotok a két csoportnak beállítjuk a fényerőt.
+
+b változó = phase aktuális értéke, ennek a csoportnak nő folyamatosan a
+fényereje.
+
+a változó = 255-phase értéke, ennek a csoportnak csökken folyamatosan a
+fényereje.
+
+A ledek ciklusain belül beállítjuk az adott csoport fényerejét:
+
+odd = eldönti, hogy az adott led páros vagy páratlan.
+
+isA = Ha switchLeds = true, akkor a páratlan ledek világítanak és a
+párosak halványulnak, ha switchLeds = false, akkor fordítva
 
 ### Színválasztó – COLORPICK – setColorFromString()
+
+<u>Működés:</u>
 
 Bluetoothon keresztül kapunk egy rgb színösszeállítást, amit be tudunk
 állítani az összes lednek.
 
 Példa adat: 210,134,110
 
-Ezt feldolgozzok úgy, hogy az első szín az r, a második a g, a harmadik
-pedig a b.
+Vesszők alapján szétválasztjuk az rgb színeket; az első szín az r, a
+második a g, a harmadik pedig a b.
 
 fill_solid-al beállítjuk az rgb színt a lednek.
