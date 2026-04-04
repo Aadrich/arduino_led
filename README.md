@@ -24,10 +24,10 @@ style="width:3.62981in;height:4.84375in" />
 <p align="center">
 > <img src="images/media/image2.png"
 > style="width:6.29167in;height:0.89583in" />
-</p>
 >
 > A párosítás során szükséges jelszót megadni, ez alapértelmezetten 1234
 > vagy 0000
+</p>
 
 3.  Sikeres párosítást követően indíthatjuk az alkalmazást. Indítást
     követően ez a felület fogad minket:
