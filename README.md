@@ -22,7 +22,7 @@ style="width:3.62981in;height:4.84375in" />
     LED elnevezésű Bluetooth eszközzel
 
 <p align="center">
-> <img src="images/media/image2.png"
+<img src="images/media/image2.png"
 > style="width:6.29167in;height:0.89583in" />
 >
 > A párosítás során szükséges jelszót megadni, ez alapértelmezetten 1234
