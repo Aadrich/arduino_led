@@ -9,7 +9,7 @@
 
 - Maga az Arduino projekt
 
-<p style="text-align">
+<p align="center">
 <img src="images/media/image1.jpeg"
 style="width:3.62981in;height:4.84375in" />
 </p>
