@@ -21,8 +21,10 @@ style="width:3.62981in;height:4.84375in" />
 2.  Ezután kapcsoljuk be a Bluetooth-t a telefonon és párosítsuk össze a
     LED elnevezésű Bluetooth eszközzel
 
+<p align="center">
 > <img src="images/media/image2.png"
 > style="width:6.29167in;height:0.89583in" />
+</p>
 >
 > A párosítás során szükséges jelszót megadni, ez alapértelmezetten 1234
 > vagy 0000
@@ -30,22 +32,28 @@ style="width:3.62981in;height:4.84375in" />
 3.  Sikeres párosítást követően indíthatjuk az alkalmazást. Indítást
     követően ez a felület fogad minket:
 
+<p align="center">
 <img src="images/media/image3.jpeg"
 style="width:2.09375in;height:4.53808in" />
+</p>
 
 4.  Bal felső sarokban nyomjuk meg a Bluetooth ikonnal elátott gombot,
     ekkor megjelennek a párosított eszközeink listája:
 
+<p align="center">
 <img src="images/media/image4.jpeg"
 style="width:1.57155in;height:3.40625in" />
+</p>
 
 Válasszuk ki a LED eszközt.
 
 5.  Sikeres csatlakozás esetén az alkalmazás visszadob a fő felületre,
     ahol már lehetőségünk van irányítani a led szalagot:
 
+<p align="center">
 <img src="images/media/image5.jpeg"
 style="width:1.72534in;height:3.73958in" />
+</p>
 
 A felületen található funkciók:
 
@@ -92,8 +100,9 @@ A felületen található funkciók:
 
 Bluetooth kezelés
 
-<img src="images/media/image6.png" style="width:6.3in;height:1.89514in"
-alt="A képen szöveg, képernyőkép, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center">
+<img src="images/media/image6.png" style="width:6.3in;height:1.89514in"/>
+</p>
 
 A BluetoothDevices nevű komponens egy lista, amit rögtön feltöltök a
 párosított eszközök MAC-címével és nevével.
@@ -106,8 +115,9 @@ megjelenítem az éppen aktuális eszköz MAC-címét és nevét.
 
 Gombok
 
-<img src="images/media/image7.png" style="width:6.3in;height:1.96806in"
-alt="A képen szöveg, képernyőkép, sor, Betűtípus látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center">
+<img src="images/media/image7.png" style="width:6.3in;height:1.96806in"/>
+</p>
 
 Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
 
@@ -121,8 +131,9 @@ Mindegyik gombnyomás elküld egy karaktert a Bluetooth eszköznek.
 
 Színválasztás
 
-<img src="images/media/image8.png" style="width:6.3in;height:3.99861in"
-alt="A képen szöveg, képernyőkép, tervezés látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center">
+<img src="images/media/image8.png" style="width:6.3in;height:3.99861in"/>
+</p>
 
 Akkor fut le ez a kód, amikor a színválasztóra rábökünk.
 
@@ -169,9 +180,10 @@ amin keresztül bemutatom a kapcsolást.
 A thinkercad nem tartalmaz Bluetooth modult, ezért ezt egy sima led
 helyettesíti.
 
+<p align="center">
 <img src="images/media/image9.png"
-style="width:4.11894in;height:4.12485in"
-alt="A képen szöveg, képernyőkép, diagram, térkép látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+style="width:4.11894in;height:4.12485in"/>
+</p>
 
 Tápegység
 
@@ -250,17 +262,21 @@ Bluetooth modul
 
 ### Setup
 
+<p align="center">
 <img src="images/media/image10.png"
 style="width:4.6875in;height:2.10417in" />
+</p>
 
 A ledek irányításához FastLED könyvtárt használok, a setup-ban beállítom
 a FastLED-et a ledek adataival, illetve elindítom a Bluetooth-t.
 
 ### Loop
 
+
+<p align="center">
 <img src="images/media/image11.png"
-style="width:2.57292in;height:1.96875in"
-alt="A képen szöveg, képernyőkép, Betűtípus, sor látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+style="width:2.57292in;height:1.96875in" />
+</p>
 
 Amikor küldünk egy adatot a Bluetooth-nak, akkor lefut a getCurrentMode
 metódus, ami feldolgozza a beolvasott adatot és beállítja az aktuális
@@ -273,8 +289,9 @@ NONE
 
 getCurrentMode folyamatábra:
 
-<img src="images/media/image12.png" style="width:6.3in;height:2.01597in"
-alt="A képen diagram, szöveg, sor, Diagram látható Előfordulhat, hogy az AI által létrehozott tartalom helytelen." />
+<p align="center">
+<img src="images/media/image12.png" style="width:6.3in;height:2.01597in">
+</p>
 
 A beolvasás után a currentMode értéke alapján lefuttatjuk a kiválasztott
 funkció függvényét.
